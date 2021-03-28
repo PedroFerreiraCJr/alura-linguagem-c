@@ -37,13 +37,11 @@ int main(int argc, char *argv[]) {
     else {
         // faz a verificação utilizando operadores relacionais para
         //dizer ao jogador quão perto o valor está do numero secreto
-        if (chute > numero_secreto) {
+        int maior = chute > numero_secreto;
+        if (maior) {
             printf("Seu chute foi maior que o número secreto.\n");
         }
-
-        // faz a verificação utilizando operadores relacionais para
-        //dizer ao jogador quão perto o valor está do numero secreto
-        if (chute < numero_secreto) {
+        else {
             printf("Seu chute foi menor que o número secreto.\n");
         }
     }
