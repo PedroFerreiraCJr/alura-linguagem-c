@@ -25,19 +25,27 @@ int main(int argc, char *argv[]) {
     scanf("%d", &chute);
 
     // imprime o valor fornecido pelo jogador
-    printf("Seu chute foi %d\n", chute);
+    printf("Seu chute foi %d.\n", chute);
 
     // implementação de verificação condicional, com ramificação, caso
     //verdadeiro e caso falso.
     if (chute == numero_secreto) {
         // caso os números forem iguais, o jogador acertou
         printf("Parabéns! Você acertou!\n");
-        printf("Jogue de novo, você é um bom jogador\n");
+        printf("Jogue de novo, você é um bom jogador.\n");
     }
     else {
-        // caso contrário, o jogador errou
-        printf("Você errou...\n");
-        printf("Mas não desanime, tente de novo.\n")
+        // faz a verificação utilizando operadores relacionais para
+        //dizer ao jogador quão perto o valor está do numero secreto
+        if (chute > numero_secreto) {
+            printf("Seu chute foi maior que o número secreto.\n");
+        }
+
+        // faz a verificação utilizando operadores relacionais para
+        //dizer ao jogador quão perto o valor está do numero secreto
+        if (chute < numero_secreto) {
+            printf("Seu chute foi menor que o número secreto.\n");
+        }
     }
 
     // instrução de retorno de valores ao chamadar da função main, que é
