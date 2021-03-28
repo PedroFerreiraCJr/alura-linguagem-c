@@ -27,6 +27,19 @@ int main(int argc, char *argv[]) {
     // imprime o valor fornecido pelo jogador
     printf("Seu chute foi %d\n", chute);
 
+    // implementação de verificação condicional, com ramificação, caso
+    //verdadeiro e caso falso.
+    if (chute == numero_secreto) {
+        // caso os números forem iguais, o jogador acertou
+        printf("Parabéns! Você acertou!\n");
+        printf("Jogue de novo, você é um bom jogador\n");
+    }
+    else {
+        // caso contrário, o jogador errou
+        printf("Você errou...\n");
+        printf("Mas não desanime, tente de novo.\n")
+    }
+
     // instrução de retorno de valores ao chamadar da função main, que é
     //o sistema operacional. nesse caso o código de sáida é conclusão normal
     return 0;
