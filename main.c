@@ -34,6 +34,12 @@ int main(int argc, char *argv[]) {
         // imprime o valor fornecido pelo jogador
         printf("Seu chute foi %d.\n", chute);
 
+        if (chute < 0) {
+            printf("Você não pode chutar números negativos...\n");
+            i--;
+            continue;
+        }
+
         int acertou = chute == numero_secreto;
         int maior = chute > numero_secreto;
 
