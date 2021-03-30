@@ -5,6 +5,8 @@
     @Autor: Pedro Junior
     @Instrucoes: como compilar no terminal: gcc -o main main.c
 */
+#define NUMERO_DE_TENTATIVAS 5
+
 
 // função principal, ponto de entrada do programa
 int main(int argc, char *argv[]) {
@@ -22,8 +24,8 @@ int main(int argc, char *argv[]) {
 
     // loop for para perguntar ao jogador, com três tentativas
     //três repetições no máximo
-    for (int i=1; i<=3; i++) {
-        printf("Tentativa %d de 3\n", i);
+    for (int i=1; i<=NUMERO_DE_TENTATIVAS; i++) {
+        printf("Tentativa %d de %d\n", i, NUMERO_DE_TENTATIVAS);
         // imprime na tela a pergunta sobre qual valor o jogador quer fornecer
         printf("Qual é o seu chute?: ");
         // lê do teclado o valor digitado pelo jogador
