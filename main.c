@@ -34,9 +34,12 @@ int main(int argc, char *argv[]) {
         // imprime o valor fornecido pelo jogador
         printf("Seu chute foi %d.\n", chute);
 
+        int acertou = chute == numero_secreto;
+        int maior = chute > numero_secreto;
+
         // implementação de verificação condicional, com ramificação, caso
         //verdadeiro e caso falso.
-        if (chute == numero_secreto) {
+        if (acertou) {
             // caso os números forem iguais, o jogador acertou
             printf("Parabéns! Você acertou!\n");
             printf("Jogue de novo, você é um bom jogador.\n");
@@ -45,16 +48,13 @@ int main(int argc, char *argv[]) {
             //o for deve ser terminado imediatamente
             break;
         }
+        // verifica se o valor do chute é maior que o numero_secreto
+        //então mostra a mensagem do bloco
+        else if (maior) {
+            printf("Seu chute foi maior que o número secreto.\n");
+        }
         else {
-            // faz a verificação utilizando operadores relacionais para
-            //dizer ao jogador quão perto o valor está do numero secreto
-            int maior = chute > numero_secreto;
-            if (maior) {
-                printf("Seu chute foi maior que o número secreto.\n");
-            }
-            else {
-                printf("Seu chute foi menor que o número secreto.\n");
-            }
+            printf("Seu chute foi menor que o número secreto.\n");
         }
 
         printf("\n");
