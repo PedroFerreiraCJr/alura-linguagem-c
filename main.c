@@ -5,7 +5,6 @@
     @Autor: Pedro Junior
     @Instrucoes: como compilar no terminal: gcc -o main main.c
 */
-#define NUMERO_DE_TENTATIVAS 5
 
 
 // função principal, ponto de entrada do programa
@@ -21,11 +20,10 @@ int main(int argc, char *argv[]) {
     // declaração e inicialização da variável que armazenará o
     //o valor do chute o jogador
     int chute = 0;
+    int tentativas = 1;
 
-    // loop for para perguntar ao jogador, com três tentativas
-    //três repetições no máximo
-    for (int i=1; i<=NUMERO_DE_TENTATIVAS; i++) {
-        printf("Tentativa %d de %d\n", i, NUMERO_DE_TENTATIVAS);
+    while (1) {
+        printf("Tentativa %d\n", tentativas);
         // imprime na tela a pergunta sobre qual valor o jogador quer fornecer
         printf("Qual é o seu chute?: ");
         // lê do teclado o valor digitado pelo jogador
@@ -36,7 +34,6 @@ int main(int argc, char *argv[]) {
 
         if (chute < 0) {
             printf("Você não pode chutar números negativos...\n");
-            i--;
             continue;
         }
 
@@ -50,8 +47,6 @@ int main(int argc, char *argv[]) {
             printf("Parabéns! Você acertou!\n");
             printf("Jogue de novo, você é um bom jogador.\n");
 
-            // caso o jogador acerte, independente da tentativa
-            //o for deve ser terminado imediatamente
             break;
         }
         // verifica se o valor do chute é maior que o numero_secreto
@@ -64,9 +59,11 @@ int main(int argc, char *argv[]) {
         }
 
         printf("\n");
+        tentativas++;
     }
 
     printf("Fim de jogo.\n");
+    printf("Você acertou em %d tentativas.\n", tentativas);
 
     // instrução de retorno de valores ao chamadar da função main, que é
     //o sistema operacional. nesse caso o código de sáida é conclusão normal
