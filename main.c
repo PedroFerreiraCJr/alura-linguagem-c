@@ -38,6 +38,10 @@ int main(int argc, char *argv[]) {
             // caso os números forem iguais, o jogador acertou
             printf("Parabéns! Você acertou!\n");
             printf("Jogue de novo, você é um bom jogador.\n");
+
+            // caso o jogador acerte, independente da tentativa
+            //o for deve ser terminado imediatamente
+            break;
         }
         else {
             // faz a verificação utilizando operadores relacionais para
