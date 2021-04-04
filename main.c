@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     //o valor do chute o jogador
     int chute = 0;
     int tentativas = 1;
-    int pontos = 1000;
+    double pontos = 1000;
 
     while (1) {
         printf("Tentativa %d\n", tentativas);
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
         }
 
         tentativas++;
-        int pontosperdidos = (chute - numero_secreto) / 2;
+        double pontosperdidos = (chute - numero_secreto) / 2.0;
         pontos = pontos - pontosperdidos;
 
         printf("\n");
@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
 
     printf("Fim de jogo.\n");
     printf("Você acertou em %d tentativas.\n", tentativas);
-    printf("Total de pontos %d.\n", pontos);
+    printf("Total de pontos %.1f.\n", pontos);
 
     // instrução de retorno de valores ao chamadar da função main, que é
     //o sistema operacional. nesse caso o código de sáida é conclusão normal
