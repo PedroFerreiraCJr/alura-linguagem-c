@@ -1,5 +1,6 @@
 // adição de biblioteca de I/O
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
     @Autor: Pedro Junior
@@ -60,7 +61,7 @@ int main(int argc, char *argv[]) {
         }
 
         tentativas++;
-        double pontosperdidos = (chute - numero_secreto) / 2.0;
+        double pontosperdidos = abs(chute - numero_secreto) / 2.0;
         pontos = pontos - pontosperdidos;
 
         printf("\n");
