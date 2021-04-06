@@ -1,6 +1,7 @@
 // adição de biblioteca de I/O
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*
     @Autor: Pedro Junior
@@ -15,8 +16,13 @@ int main(int argc, char *argv[]) {
     printf("* Seja bem-vindo ao nosso Jogo de Adivinhação *\n");
     printf("***********************************************\n");
 
+    int segundos = time(0);
+    srand(segundos);
+
+    int numero_grande = rand();
+
     // declaração e inicialização de variável do tipo inteiro
-    int numero_secreto = 42;
+    int numero_secreto = numero_grande % 100;
 
     // declaração e inicialização da variável que armazenará o
     //o valor do chute o jogador
