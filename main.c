@@ -27,10 +27,32 @@ int main(int argc, char *argv[]) {
     // declaração e inicialização da variável que armazenará o
     //o valor do chute o jogador
     int chute = 0;
+    int acertou = 0;
     int tentativas = 1;
     double pontos = 1000;
 
-    while (1) {
+    int nivel;
+    printf("Qual o nível de dificuldade?\n");
+    printf("(1) Fácil, (2) Médio, (3) Difícil\n\n");
+    printf("Escolha: ");
+    scanf("%d", &nivel);
+
+    int numero_tentativas;
+    switch (nivel) {
+        case 1: {
+            numero_tentativas = 20;
+            break;
+        }
+        case 2: {
+            numero_tentativas = 15;
+            break;
+        }
+        default: {
+            numero_tentativas = 6;
+        }
+    }
+
+    for (int i=1; i<=numero_tentativas; i++) {
         printf("Tentativa %d\n", tentativas);
         // imprime na tela a pergunta sobre qual valor o jogador quer fornecer
         printf("Qual é o seu chute?: ");
@@ -45,21 +67,17 @@ int main(int argc, char *argv[]) {
             continue;
         }
 
-        int acertou = chute == numero_secreto;
+        acertou = chute == numero_secreto;
         int maior = chute > numero_secreto;
 
         // implementação de verificação condicional, com ramificação, caso
         //verdadeiro e caso falso.
         if (acertou) {
-            // caso os números forem iguais, o jogador acertou
-            printf("Parabéns! Você acertou!\n");
-            printf("Jogue de novo, você é um bom jogador.\n");
-
             break;
         }
-        // verifica se o valor do chute é maior que o numero_secreto
-        //então mostra a mensagem do bloco
         else if (maior) {
+            // verifica se o valor do chute é maior que o numero_secreto
+            //então mostra a mensagem do bloco
             printf("Seu chute foi maior que o número secreto.\n");
         }
         else {
@@ -75,8 +93,16 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Fim de jogo.\n");
-    printf("Você acertou em %d tentativas.\n", tentativas);
-    printf("Total de pontos %.1f.\n", pontos);
+    if (acertou) {
+        printf("Parabéns! Você acertou!\n");
+        printf("Jogue de novo, você é um bom jogador.\n");
+        printf("Você acertou em %d tentativas.\n", tentativas);
+        printf("Total de pontos %.1f.\n", pontos);
+    }
+    else {
+        printf("Você perdeu!\n");
+        printf("Tente novamente.\n");
+    }
 
     // instrução de retorno de valores ao chamadar da função main, que é
     //o sistema operacional. nesse caso o código de sáida é conclusão normal
