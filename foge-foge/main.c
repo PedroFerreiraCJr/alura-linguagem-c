@@ -6,6 +6,7 @@
 
 Mapa m;
 Posicao heroi;
+int tem_pilula = 0;
 
 void fantasmas() {
     Mapa copia;
@@ -97,11 +98,50 @@ void move(char direcao) {
     if (!pode_movimentar(&m, HEROI, proximo_x, proximo_y)) {
         return;
     }
+
+    if (eh_personagem(&m, PILULA, proximo_x, proximo_y)) {
+        tem_pilula = 1;
+    }
     
-    // atualiza as posições no tabuleiro
+    // atualiza a posição do heroi no tabuleiro
     atualiza_posicao_mapa(&m, heroi.x, heroi.y, proximo_x, proximo_y);
     heroi.x = proximo_x;
     heroi.y = proximo_y;
+}
+
+void explodir_pilula() {
+    // early return, não tem pilula para explodir os fantasmas
+    if (!tem_pilula) {
+        return;
+    }
+
+    explodir_pilula2(heroi.x, heroi.y, 0, 1, 3);
+    explodir_pilula2(heroi.x, heroi.y, 0, -1, 3);
+    explodir_pilula2(heroi.x, heroi.y, 1, 0, 3);
+    explodir_pilula2(heroi.x, heroi.y, -1, 0, 3);
+
+    tem_pilula = 0;
+}
+
+void explodir_pilula2(int x, int y, int soma_x, int soma_y, int qtd) {
+    // condição de parada da chamada recursiva
+    if (qtd == 0) {
+        return;
+    }
+    
+    if (!eh_valida(&m, x, y + 1)) {
+        return;
+    }
+
+    if (eh_parede(&m, x, y + 1)) {
+        return;
+    }
+
+    int nova_x = x + soma_x;
+    int nova_y = y + soma_y;
+
+    m.matriz[nova_x][nova_y] = VAZIO;
+    explodir_pilula(nova_x, nova_y, soma_x, soma_y, qtd - 1);
 }
 
 int main() {
@@ -113,8 +153,12 @@ int main() {
 
         char comando;
         scanf(" %c", &comando);
-
         move(comando);
+
+        if (comando == BOMBA) {
+            explodir_pilula(heroi.x, heroi.y, 3);
+        }
+
         fantasmas();
     } while (!acabou());
 
